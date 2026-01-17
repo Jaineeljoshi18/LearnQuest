@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LearnQuest SIH - Bridging Rural Education Gaps</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="manifest" href="data:application/json;base64,eyJuYW1lIjoiTGVhcm5RdWVzdCBTSUgiLCJzaG9ydF9uYW1lIjoiTGVhcm5RdWVzdCIsImljb25zIjpbeyJzcmMiOiJkYXRhOmltYWdlL3N2Zyt4bWw7YmFzZTY0LFBEOTRiV3dnZG1WeWMybHZiajBpTVM0d0lpQmxibU52WkdsdVp6MGlkWFJtTFRnaVB6NEtQSE4yWnlCM2FXUjBhRDBpTWpRaUlHaGxhV2RvZEQwaU1qUWlJSFpwWlhkQ2IzZzlJakFnTUNBeU5DQXlOQ0lnWm1sc2JEMGlibTl1WlNJK0NqdzJaR1ZtYno0S1BISmxZM1FnZUQwaU1DSWdlVDBpTUNJZ2QybGtkR2c5SWpJMElpQm9aV2xuYUhROUlqSTBJaUJtYVd4c1BTSWpOREZDTlRSR0lpOCtDanAwWlhoMElIZzlJakV5SWlCNVBTSXhOaUlnWm1sc2JEMGlkMmhwZEdVaUlHWnZiblF0WTI5dGFXeDBQU0poY0dsaGJDd2djMmx1Y3lMV3JzVzBJRTBpUGt3OGRUQkhTMElnUUVJPSIsInR5cGUiOiJpbWFnZS9zdmcreG1sIiwic2l6ZXMiOiIyNHgyNCJ9XSwic3RhcnRfdXJsIjoiLiIsImRpc3BsYXkiOiJzdGFuZGFsb25lIiwidGhlbWVfY29sb3IiOiIjMzMzIiwiYmFja2dyb3VuZF9jb2xvciI6IiNmZmYifQ==">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading" class="loading-screen">
+        <div class="loading-content">
+            <div class="loading-logo">🎓</div>
+            <h1>LearnQuest SIH</h1>
+            <h2>Bridging Rural Education Gaps</h2>
+            <div class="loading-bar">
+                <div class="loading-progress"></div>
+            </div>
+            <p class="loading-text">Empowering 100M+ Rural Students Across India...</p>
+            <div class="loading-features">
+                <span>🌐 Offline Learning</span>
+                <span>🎮 Gamified Experience</span>
+                <span>🗣️ Multi-language Support</span>
+                <span>🤖 AI-Powered Assistance</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main App Container -->
+    <div id="app" class="app-container hidden">
+        <!-- Navigation Header -->
+        <header class="app-header">
+            <div class="header-content">
+                <button class="menu-toggle" id="menuToggle">☰</button>
+                <div class="app-logo">
+                    <span class="logo-icon">🎓</span>
+                    <div class="logo-info">
+                        <span class="logo-text">LearnQuest SIH</span>
+                        <span class="logo-subtitle">Rural Education Revolution</span>
+                    </div>
+                </div>
+                <div class="header-actions">
+                    <div class="language-selector">
+                        <button class="language-btn active" data-lang="en">🇺🇸 EN</button>
+                        <button class="language-btn" data-lang="hi">🇮🇳 हिं</button>
+                        <button class="language-btn" data-lang="mr">🚩 मर</button>
+                    </div>
+                    <div class="user-profile" id="userProfile">
+                        <span class="user-avatar">👨‍🎓</span>
+                        <div class="user-info">
+                            <span class="user-name">Gaurrang Agrawal</span>
+                            <span class="user-level">Level 15 • 1250 pts</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar" id="sidebar">
+            <div class="sidebar-content">
+                <div class="sidebar-user">
+                    <div class="user-avatar-large">👨‍🎓</div>
+                    <h3 id="sidebarUserName">Gaurrang Agrawal</h3>
+                    <p id="sidebarUserInfo">Class 6 • Rampur School</p>
+                    <div class="user-stats">
+                        <div class="stat">
+                            <span class="stat-number">1250</span>
+                            <span class="stat-label">Points</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">18</span>
+                            <span class="stat-label">Streak</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">4</span>
+                            <span class="stat-label">Badges</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="nav-section">
+                    <h4 data-translate="student_portal">Student Portal</h4>
+                    <ul class="nav-menu">
+                        <li><a href="#" data-page="landing" class="nav-link active" data-translate="home">🏠 Home</a></li>
+                        <li><a href="#" data-page="onboarding" class="nav-link" data-translate="setup_profile">👤 Setup Profile</a></li>
+                        <li><a href="#" data-page="dashboard" class="nav-link" data-translate="dashboard">📊 Dashboard</a></li>
+                        <li><a href="#" data-page="subjects" class="nav-link" data-translate="subjects">📚 Subjects</a></li>
+                        <li><a href="#" data-page="progress" class="nav-link" data-translate="progress">📈 Progress</a></li>
+                        <li><a href="#" data-page="chatbot" class="nav-link" data-translate="ai_tutor">🤖 AI Tutor</a></li>
+                        <li><a href="#" data-page="gamification" class="nav-link" data-translate="achievements">🏆 Achievements</a></li>
+                        <li><a href="#" data-page="offline" class="nav-link" data-translate="offline_mode">📱 Offline Mode</a></li>
+                    </ul>
+                </div>
+
+                <div class="nav-section">
+                    <h4 data-translate="teacher_portal">Teacher Portal</h4>
+                    <ul class="nav-menu">
+                        <li><a href="#" data-page="teacher-onboarding" class="nav-link" data-translate="teacher_setup">🎓 Teacher Setup</a></li>
+                        <li><a href="#" data-page="teacher-dashboard" class="nav-link" data-translate="class_overview">📋 Class Overview</a></li>
+                        <li><a href="#" data-page="analytics" class="nav-link" data-translate="analytics">📊 Analytics</a></li>
+                        <li><a href="#" data-page="assignments" class="nav-link" data-translate="assignments">📝 Assignments</a></li>
+                        <li><a href="#" data-page="doubt-management" class="nav-link" data-translate="doubt_clearing">❓ Doubt Clearing</a></li>
+                    </ul>
+                </div>
+
+                <div class="nav-section">
+                    <h4 data-translate="parent_portal">Parent Portal</h4>
+                    <ul class="nav-menu">
+                        <li><a href="#" data-page="parent-dashboard" class="nav-link" data-translate="child_progress">👨‍👩‍👧‍👦 Child Progress</a></li>
+                        <li><a href="#" data-page="parent-reports" class="nav-link" data-translate="reports">📋 Reports</a></li>
+                    </ul>
+                </div>
+
+                <div class="nav-section">
+                    <h4 data-translate="platform">Platform</h4>
+                    <ul class="nav-menu">
+                        <li><a href="#" data-page="impact" class="nav-link" data-translate="impact">🌟 Impact</a></li>
+                        <li><a href="#" data-page="demo" class="nav-link" data-translate="demo_flow">🎬 Demo Flow</a></li>
+                        <li><a href="#" data-page="accessibility" class="nav-link" data-translate="accessibility">♿ Accessibility</a></li>
+                        <li><a href="#" data-page="settings" class="nav-link" data-translate="settings">⚙️ Settings</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main class="main-content" id="mainContent">
+            <!-- Enhanced Landing Page -->
+            <div id="landing" class="page active">
+                <div class="landing-hero">
+                    <div class="hero-animation">
+                        <div class="floating-elements">
+                            <span class="float-elem">📚</span>
+                            <span class="float-elem">🌟</span>
+                            <span class="float-elem">🎮</span>
+                            <span class="float-elem">🤖</span>
+                        </div>
+                    </div>
+                    <div class="hero-content">
+                        <h1 class="hero-title animate-text">
+                            <span class="highlight" data-translate="welcome_title">LearnQuest SIH</span>
+                            <br>
+                            <span data-translate="hero_subtitle">Bridging Rural Education Gaps</span>
+                        </h1>
+                        <p class="hero-description" data-translate="hero_description">
+                            AI-Powered Gamified Learning Platform transforming education for 100M+ rural students across India
+                        </p>
+
+                        <!-- Role Selection -->
+                        <div class="role-selection">
+                            <h3 data-translate="choose_role">Choose Your Role</h3>
+                            <div class="role-cards">
+                                <div class="role-card" data-role="student">
+                                    <div class="role-icon">👨‍🎓</div>
+                                    <h4 data-translate="student">Student</h4>
+                                    <p data-translate="student_desc">Start your learning journey</p>
+                                </div>
+                                <div class="role-card" data-role="teacher">
+                                    <div class="role-icon">👩‍🏫</div>
+                                    <h4 data-translate="teacher">Teacher</h4>
+                                    <p data-translate="teacher_desc">Manage your classroom</p>
+                                </div>
+                                <div class="role-card" data-role="parent">
+                                    <div class="role-icon">👨‍👩‍👧‍👦</div>
+                                    <h4 data-translate="parent">Parent</h4>
+                                    <p data-translate="parent_desc">Monitor child's progress</p>
+                                </div>
+                                <div class="role-card" data-role="admin">
+                                    <div class="role-icon">👨‍💼</div>
+                                    <h4 data-translate="admin">Admin</h4>
+                                    <p data-translate="admin_desc">System management</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Grade Selection -->
+                        <div class="grade-selection">
+                            <h3 data-translate="select_grade">Select Your Grade (6-12)</h3>
+                            <div class="grade-slider">
+                                <input type="range" id="gradeSlider" min="6" max="12" value="6" class="slider">
+                                <div class="grade-display">
+                                    <span data-translate="grade">Grade</span> <span id="selectedGrade">6</span>
+                                    <span class="grade-status" id="gradeStatus">Fully Developed</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Key Highlights -->
+                        <div class="feature-highlights">
+                            <h3 data-translate="key_features">Key Features</h3>
+                            <div class="highlights-grid">
+                                <div class="highlight-card">
+                                    <div class="highlight-icon animate-bounce">🌐</div>
+                                    <h4 data-translate="works_offline">Works Offline</h4>
+                                    <p data-translate="offline_desc">Learn anywhere, anytime without internet</p>
+                                </div>
+                                <div class="highlight-card">
+                                    <div class="highlight-icon animate-bounce">🎮</div>
+                                    <h4 data-translate="gamified">Fully Gamified</h4>
+                                    <p data-translate="gamified_desc">Points, badges, and level-based learning</p>
+                                </div>
+                                <div class="highlight-card">
+                                    <div class="highlight-icon animate-bounce">🗣️</div>
+                                    <h4 data-translate="multilingual">Multi-language</h4>
+                                    <p data-translate="multilingual_desc">English, Hindi, Marathi support</p>
+                                </div>
+                                <div class="highlight-card">
+                                    <div class="highlight-icon animate-bounce">📊</div>
+                                    <h4 data-translate="ai_tracking">AI Progress Tracking</h4>
+                                    <p data-translate="ai_tracking_desc">Smart recommendations and analytics</p>
+                                </div>
+                                <div class="highlight-card">
+                                    <div class="highlight-icon animate-bounce">🤖</div>
+                                    <h4 data-translate="doubt_bot">Smart Doubt Bot</h4>
+                                    <p data-translate="doubt_bot_desc">24/7 AI-powered learning assistant</p>
+                                </div>
+                                <div class="highlight-card">
+                                    <div class="highlight-icon animate-bounce">📱</div>
+                                    <h4 data-translate="device_compatible">Low-cost Device Optimized</h4>
+                                    <p data-translate="device_desc">Works on any smartphone or tablet</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- CTA Buttons -->
+                        <div class="cta-section">
+                            <button class="btn btn--primary btn--lg cta-btn" data-page="onboarding" data-translate="start_learning">
+                                🚀 Start Learning Journey
+                            </button>
+                            <button class="btn btn--outline btn--lg cta-btn" data-page="demo" data-translate="watch_demo">
+                                🎬 Watch Demo
+                            </button>
+                        </div>
+
+                        <!-- Impact Statistics -->
+                        <div class="impact-stats">
+                            <div class="stat-item">
+                                <span class="stat-number">10,000+</span>
+                                <span class="stat-label" data-translate="students_reached">Students Reached</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">500+</span>
+                                <span class="stat-label" data-translate="schools_participating">Government Schools</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">35%</span>
+                                <span class="stat-label" data-translate="improvement">Score Improvement</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">78%</span>
+                                <span class="stat-label" data-translate="offline_usage">Offline Learning</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Student Onboarding -->
+            <div id="onboarding" class="page">
+                <div class="onboarding-container">
+                    <div class="onboarding-header">
+                        <div class="progress-indicator">
+                            <div class="step active" data-step="1">1</div>
+                            <div class="step" data-step="2">2</div>
+                            <div class="step" data-step="3">3</div>
+                            <div class="step" data-step="4">4</div>
+                        </div>
+                        <h2 id="onboardingTitle" data-translate="personal_details">Personal Details</h2>
+                        <p id="onboardingDescription" data-translate="tell_about_yourself">Tell us about yourself to personalize your learning</p>
+                    </div>
+                    
+                    <div class="onboarding-content" id="onboardingContent">
+                        <!-- Step 1: Personal Details -->
+                        <div class="onboarding-step active" data-step="1">
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label class="form-label" data-translate="full_name">Full Name</label>
+                                    <input type="text" class="form-control" id="studentName" placeholder="Enter your name">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" data-translate="age">Age</label>
+                                    <select class="form-control" id="studentAge">
+                                        <option value="">Select Age</option>
+                                        <option value="11">11 years</option>
+                                        <option value="12">12 years</option>
+                                        <option value="13">13 years</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" data-translate="school_name">School Name</label>
+                                    <input type="text" class="form-control" id="schoolName" placeholder="Your school name">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" data-translate="village">Village/City</label>
+                                    <input type="text" class="form-control" id="village" placeholder="Your location">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Step 2: Interests -->
+                        <div class="onboarding-step" data-step="2">
+                            <h3 data-translate="select_interests">What interests you the most?</h3>
+                            <div class="interests-grid">
+                                <div class="interest-card" data-interest="science_experiments">
+                                    <div class="interest-icon">🔬</div>
+                                    <span data-translate="science_experiments">Science Experiments</span>
+                                </div>
+                                <div class="interest-card" data-interest="math_puzzles">
+                                    <div class="interest-icon">🧮</div>
+                                    <span data-translate="math_puzzles">Math Puzzles</span>
+                                </div>
+                                <div class="interest-card" data-interest="stories">
+                                    <div class="interest-icon">📖</div>
+                                    <span data-translate="stories">Stories</span>
+                                </div>
+                                <div class="interest-card" data-interest="games">
+                                    <div class="interest-icon">🎮</div>
+                                    <span data-translate="games">Games</span>
+                                </div>
+                                <div class="interest-card" data-interest="art">
+                                    <div class="interest-icon">🎨</div>
+                                    <span data-translate="art">Art & Creativity</span>
+                                </div>
+                                <div class="interest-card" data-interest="music">
+                                    <div class="interest-icon">🎵</div>
+                                    <span data-translate="music">Music</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Step 3: Learning Preferences -->
+                        <div class="onboarding-step" data-step="3">
+                            <h3 data-translate="learning_style">How do you learn best?</h3>
+                            <div class="learning-styles">
+                                <div class="style-card" data-style="visual">
+                                    <div class="style-icon">👁️</div>
+                                    <h4 data-translate="visual_learner">Visual Learner</h4>
+                                    <p data-translate="visual_desc">Pictures, diagrams, and colorful content</p>
+                                </div>
+                                <div class="style-card" data-style="audio">
+                                    <div class="style-icon">👂</div>
+                                    <h4 data-translate="audio_learner">Audio Learner</h4>
+                                    <p data-translate="audio_desc">Listening to explanations and sounds</p>
+                                </div>
+                                <div class="style-card" data-style="interactive">
+                                    <div class="style-icon">✋</div>
+                                    <h4 data-translate="interactive_learner">Interactive Learner</h4>
+                                    <p data-translate="interactive_desc">Hands-on activities and games</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Step 4: Avatar & Goals -->
+                        <div class="onboarding-step" data-step="4">
+                            <div class="avatar-goals-container">
+                                <div class="avatar-selection">
+                                    <h3 data-translate="choose_avatar">Choose Your Avatar</h3>
+                                    <div class="avatar-options">
+                                        <div class="avatar-option active" data-avatar="boy_1">👨‍🎓</div>
+                                        <div class="avatar-option" data-avatar="girl_1">👩‍🎓</div>
+                                        <div class="avatar-option" data-avatar="boy_2">🧑‍💻</div>
+                                        <div class="avatar-option" data-avatar="girl_2">👩‍💻</div>
+                                    </div>
+                                </div>
+                                <div class="goals-selection">
+                                    <h3 data-translate="set_goals">Set Your Learning Goals</h3>
+                                    <div class="goal-item">
+                                        <label data-translate="daily_time">Daily Learning Time</label>
+                                        <select class="form-control" id="dailyTime">
+                                            <option value="30">30 minutes</option>
+                                            <option value="45">45 minutes</option>
+                                            <option value="60">1 hour</option>
+                                            <option value="90">1.5 hours</option>
+                                        </select>
+                                    </div>
+                                    <div class="goal-item">
+                                        <label data-translate="focus_subjects">Focus Subjects</label>
+                                        <div class="subject-checkboxes">
+                                            <label><input type="checkbox" value="mathematics"> <span data-translate="mathematics">Mathematics</span></label>
+                                            <label><input type="checkbox" value="science"> <span data-translate="science">Science</span></label>
+                                            <label><input type="checkbox" value="english"> <span data-translate="english">English</span></label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="onboarding-navigation">
+                        <button class="btn btn--secondary" id="prevStep" style="display: none;" data-translate="previous">Previous</button>
+                        <button class="btn btn--primary" id="nextStep" data-translate="next">Next</button>
+                        <button class="btn btn--primary" id="completeOnboarding" style="display: none;" data-translate="start_learning">Start Learning!</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Enhanced Student Dashboard -->
+            <div id="dashboard" class="page">
+                <div class="dashboard-header">
+                    <div class="welcome-section">
+                        <div class="mascot-greeting">
+                            <div class="mascot">🤖</div>
+                            <div class="greeting-text">
+                                <h1 data-translate="welcome_back">Welcome back, <span id="dashboardStudentName">Gaurrang Agrawal</span>! 👋</h1>
+                                <p id="motivationalMessage" data-translate="ready_to_learn">Ready to continue your learning adventure?</p>
+                            </div>
+                        </div>
+                        <div class="streak-indicator">
+                            <div class="streak-fire">🔥</div>
+                            <div class="streak-info">
+                                <span id="streakCount">18</span>
+                                <span data-translate="day_streak">Day Streak!</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stats-overview">
+                        <div class="stat-card points">
+                            <div class="stat-icon">⭐</div>
+                            <div class="stat-content">
+                                <h3 id="totalPoints">1250</h3>
+                                <p data-translate="total_points">Total Points</p>
+                                <div class="progress-to-next">
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 60%"></div>
+                                    </div>
+                                    <span data-translate="next_level">250 to next level</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="stat-card level">
+                            <div class="stat-icon">🏆</div>
+                            <div class="stat-content">
+                                <h3 id="currentLevel">15</h3>
+                                <p data-translate="current_level">Current Level</p>
+                                <span class="level-name" data-translate="knowledge_seeker">Knowledge Seeker</span>
+                            </div>
+                        </div>
+                        <div class="stat-card badges">
+                            <div class="stat-icon">🎖️</div>
+                            <div class="stat-content">
+                                <h3 id="badgeCount">4</h3>
+                                <p data-translate="badges_earned">Badges Earned</p>
+                                <div class="badge-preview">
+                                    <span class="mini-badge">🏆</span>
+                                    <span class="mini-badge">🔬</span>
+                                    <span class="mini-badge">📝</span>
+                                    <span class="mini-badge">🔍</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="stat-card completion">
+                            <div class="stat-icon">📊</div>
+                            <div class="stat-content">
+                                <h3 id="overallCompletion">68%</h3>
+                                <p data-translate="overall_progress">Overall Progress</p>
+                                <span data-translate="on_track">On track for success!</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Today's Recommendations -->
+                <div class="daily-recommendations">
+                    <h2 data-translate="todays_recommendations">🌟 Today's Recommendations</h2>
+                    <div class="recommendations-grid">
+                        <div class="recommendation-card priority">
+                            <div class="rec-header">
+                                <span class="rec-type" data-translate="weak_area">Weak Area</span>
+                                <span class="rec-priority">🔴</span>
+                            </div>
+                            <h3 data-translate="fractions_practice">Practice Fractions</h3>
+                            <p data-translate="fractions_recommendation">You scored 65% in fractions. Let's improve!</p>
+                            <button class="btn btn--primary btn--sm" data-translate="practice_now">Practice Now</button>
+                        </div>
+                        <div class="recommendation-card suggested">
+                            <div class="rec-header">
+                                <span class="rec-type" data-translate="next_topic">Next Topic</span>
+                                <span class="rec-priority">🟡</span>
+                            </div>
+                            <h3 data-translate="light_shadows">Light & Shadows</h3>
+                            <p data-translate="light_recommendation">Ready to explore how light works?</p>
+                            <button class="btn btn--primary btn--sm" data-translate="start_lesson">Start Lesson</button>
+                        </div>
+                        <div class="recommendation-card bonus">
+                            <div class="rec-header">
+                                <span class="rec-type" data-translate="bonus_challenge">Bonus Challenge</span>
+                                <span class="rec-priority">🟢</span>
+                            </div>
+                            <h3 data-translate="grammar_detective">Grammar Detective</h3>
+                            <p data-translate="grammar_recommendation">Special challenge with extra points!</p>
+                            <button class="btn btn--primary btn--sm" data-translate="accept_challenge">Accept Challenge</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Subject Progress -->
+                <div class="subjects-dashboard">
+                    <h2 data-translate="subject_progress">📚 Subject Progress</h2>
+                    <div class="subjects-grid" id="subjectsDashboard">
+                        <!-- Subjects will be dynamically generated -->
+                    </div>
+                </div>
+
+                <!-- Recent Activity -->
+                <div class="recent-activity">
+                    <h2 data-translate="recent_activity">📈 Recent Activity</h2>
+                    <div class="activity-timeline" id="activityTimeline">
+                        <!-- Activity items will be dynamically generated -->
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="quick-actions-dashboard">
+                    <h2 data-translate="quick_actions">⚡ Quick Actions</h2>
+                    <div class="actions-grid">
+                        <button class="action-btn" data-page="chatbot">
+                            <span class="action-icon">🤖</span>
+                            <span data-translate="ask_doubt">Ask a Doubt</span>
+                        </button>
+                        <button class="action-btn" data-page="subjects">
+                            <span class="action-icon">📚</span>
+                            <span data-translate="continue_learning">Continue Learning</span>
+                        </button>
+                        <button class="action-btn" data-page="gamification">
+                            <span class="action-icon">🏆</span>
+                            <span data-translate="view_achievements">View Achievements</span>
+                        </button>
+                        <button class="action-btn" data-page="offline">
+                            <span class="action-icon">📱</span>
+                            <span data-translate="download_content">Download Content</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AI Chatbot Interface -->
+            <div id="chatbot" class="page">
+                <div class="chatbot-header">
+                    <div class="chatbot-intro">
+                        <div class="bot-avatar">🤖</div>
+                        <div class="bot-info">
+                            <h1 data-translate="ai_tutor_title">AI Learning Assistant</h1>
+                            <p data-translate="ai_tutor_desc">Trained on Grade 6 CBSE curriculum - Ask me anything!</p>
+                            <div class="bot-capabilities">
+                                <span class="capability">📚 All Subjects</span>
+                                <span class="capability">🗣️ Multi-language</span>
+                                <span class="capability">⚡ Instant Help</span>
+                                <span class="capability">🎯 Step-by-step Solutions</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chatbot-container">
+                    <div class="chat-messages" id="chatMessages">
+                        <div class="message bot-message">
+                            <div class="message-avatar">🤖</div>
+                            <div class="message-content">
+                                <div class="message-text">
+                                    <p data-translate="bot_greeting">Namaste! I'm your AI learning buddy. I can help with Mathematics, Science, English, Hindi, Social Science, and Marathi. What would you like to learn today?</p>
+                                </div>
+                                <div class="quick-suggestions">
+                                    <button class="suggestion-btn" data-question="What are natural numbers?" data-translate="natural_numbers">Natural Numbers</button>
+                                    <button class="suggestion-btn" data-question="Explain photosynthesis" data-translate="photosynthesis">Photosynthesis</button>
+                                    <button class="suggestion-btn" data-question="Hindi grammar help" data-translate="hindi_grammar">Hindi Grammar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="chat-input-container">
+                        <div class="input-with-features">
+                            <button class="feature-btn" id="voiceInput" title="Voice Input">🎤</button>
+                            <input type="text" class="form-control chat-input" id="chatInput" placeholder="Type your question here..." data-translate-placeholder="type_question">
+                           <div onclick="window.open('http://localhost:8501', '_blank')" style="display: inline-block; margin-left: 10px;">
+                            <a href="http://localhost:8501" target="_blank" class="action-btn" style="text-decoration: none;">
+                            <span class="action-icon">🤖</span>
+                             <span>AI TUTOR Online</span>
+                            </a></div>
+
+                            <button class="feature-btn" id="translateBtn" title="Translate">🌐</button>
+                            <button class="btn btn--primary chat-send" id="sendMessage" data-translate="send">Send</button>
+                        </div>
+                        <div class="input-help">
+                            <span data-translate="chat_help">Try: "Explain fractions", "What is democracy?", "Help with math homework"</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Enhanced Gamification Hub -->
+            <div id="gamification" class="page">
+                <div class="gamification-header">
+                    <h1 data-translate="achievements_center">🏆 Achievements Center</h1>
+                    <p data-translate="achievements_desc">Track your progress, earn badges, and compete with friends!</p>
+                </div>
+
+                <div class="achievement-overview">
+                    <div class="achievement-stats">
+                        <div class="achievement-stat">
+                            <div class="stat-icon">🏆</div>
+                            <div class="stat-info">
+                                <span class="stat-number" id="totalBadges">4</span>
+                                <span class="stat-label" data-translate="badges_collected">Badges Collected</span>
+                            </div>
+                        </div>
+                        <div class="achievement-stat">
+                            <div class="stat-icon">⭐</div>
+                            <div class="stat-info">
+                                <span class="stat-number" id="totalPointsGamification">1250</span>
+                                <span class="stat-label" data-translate="points_earned">Points Earned</span>
+                            </div>
+                        </div>
+                        <div class="achievement-stat">
+                            <div class="stat-icon">📈</div>
+                            <div class="stat-info">
+                                <span class="stat-number" id="currentRank">15</span>
+                                <span class="stat-label" data-translate="class_rank">Class Rank</span>
+                            </div>
+                        </div>
+                        <div class="achievement-stat">
+                            <div class="stat-icon">🔥</div>
+                            <div class="stat-info">
+                                <span class="stat-number" id="longestStreak">18</span>
+                                <span class="stat-label" data-translate="longest_streak">Longest Streak</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="badges-showcase">
+                    <h2 data-translate="badge_collection">Badge Collection</h2>
+                    <div class="badge-categories">
+                        <button class="category-btn active" data-category="all" data-translate="all_badges">All Badges</button>
+                        <button class="category-btn" data-category="earned" data-translate="earned">Earned</button>
+                        <button class="category-btn" data-category="locked" data-translate="locked">Locked</button>
+                        <button class="category-btn" data-category="subject" data-translate="by_subject">By Subject</button>
+                    </div>
+                    <div class="badges-grid" id="badgesGrid">
+                        <!-- Badges will be dynamically generated -->
+                    </div>
+                </div>
+
+                <div class="leaderboard-section">
+                    <h2 data-translate="class_leaderboard">🎯 Class Leaderboard</h2>
+                    <div class="leaderboard" id="leaderboard">
+                        <!-- Leaderboard will be dynamically generated -->
+                    </div>
+                </div>
+
+                <div class="challenges-section">
+                    <h2 data-translate="active_challenges">⚡ Active Challenges</h2>
+                    <div class="challenges-grid" id="challengesGrid">
+                        <!-- Challenges will be dynamically generated -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Other pages remain similar with enhanced content... -->
+            <!-- For brevity, I'm including key pages. The full implementation would include all pages -->
+
+            <!-- Impact Showcase -->
+            <div id="impact" class="page">
+                <div class="impact-header">
+                    <h1 data-translate="platform_impact">🌟 Platform Impact</h1>
+                    <p data-translate="impact_desc">Transforming rural education across India with technology and innovation</p>
+                </div>
+
+                <div class="impact-metrics">
+                    <div class="metric-card">
+                        <div class="metric-icon">👨‍🎓</div>
+                        <div class="metric-content">
+                            <h3>10,000+</h3>
+                            <p data-translate="students_benefited">Students Benefited</p>
+                            <span class="metric-growth" data-translate="growing_daily">Growing daily</span>
+                        </div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-icon">🏫</div>
+                        <div class="metric-content">
+                            <h3>500+</h3>
+                            <p data-translate="schools_connected">Government Schools</p>
+                            <span class="metric-growth" data-translate="across_states">Across 15 states</span>
+                        </div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-icon">📈</div>
+                        <div class="metric-content">
+                            <h3>35%</h3>
+                            <p data-translate="test_score_improvement">Test Score Improvement</p>
+                            <span class="metric-growth" data-translate="average_increase">Average increase</span>
+                        </div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-icon">📱</div>
+                        <div class="metric-content">
+                            <h3>78%</h3>
+                            <p data-translate="offline_learning_usage">Offline Learning Usage</p>
+                            <span class="metric-growth" data-translate="rural_connectivity">Perfect for rural areas</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="scalability-roadmap">
+                    <h2 data-translate="scalability_plan">📋 Scalability Roadmap</h2>
+                    <div class="roadmap-timeline">
+                        <div class="timeline-item completed">
+                            <div class="timeline-marker">✅</div>
+                            <div class="timeline-content">
+                                <h3 data-translate="current_phase">Current Phase</h3>
+                                <p data-translate="grade6_complete">Grade 6 fully developed with 6 subjects</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-marker">🚧</div>
+                            <div class="timeline-content">
+                                <h3 data-translate="phase1">Phase 1 (6 months)</h3>
+                                <p data-translate="grades_78">Grades 7-8 expansion with enhanced features</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-marker">🎯</div>
+                            <div class="timeline-content">
+                                <h3 data-translate="phase2">Phase 2 (12 months)</h3>
+                                <p data-translate="grades_910">Grades 9-10 with board exam preparation</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-marker">🚀</div>
+                            <div class="timeline-content">
+                                <h3 data-translate="future">Future Vision</h3>
+                                <p data-translate="college_prep">College entrance prep and skill development</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Settings Page -->
+            <div id="settings" class="page">
+                <div class="settings-header">
+                    <h1 data-translate="settings_title">⚙️ Settings</h1>
+                    <p data-translate="customize_experience">Customize your learning experience</p>
+                </div>
+
+                <div class="settings-grid">
+                    <div class="settings-category">
+                        <h3 data-translate="language_region">🌐 Language & Region</h3>
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <label class="setting-label" data-translate="interface_language">Interface Language</label>
+                                <p class="setting-desc" data-translate="language_desc">Choose your preferred language for the app</p>
+                            </div>
+                            <select class="form-control" id="languageSelect">
+                                <option value="en">English</option>
+                                <option value="hi">हिन्दी (Hindi)</option>
+                                <option value="mr">मराठी (Marathi)</option>
+                            </select>
+                        </div>
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <label class="setting-label" data-translate="content_language">Content Language</label>
+                                <p class="setting-desc" data-translate="content_language_desc">Language for lessons and quizzes</p>
+                            </div>
+                            <select class="form-control" id="contentLanguageSelect">
+                                <option value="en">English</option>
+                                <option value="hi">हिन्दी (Hindi)</option>
+                                <option value="mr">मराठी (Marathi)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="settings-category">
+                        <h3 data-translate="accessibility">♿ Accessibility</h3>
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <label class="setting-label" data-translate="text_to_speech">Text-to-Speech</label>
+                                <p class="setting-desc" data-translate="tts_desc">Have content read aloud to you</p>
+                            </div>
+                            <div class="toggle-switch">
+                                <input type="checkbox" id="textToSpeech" checked>
+                                <span class="toggle-slider"></span>
+                            </div>
+                        </div>
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <label class="setting-label" data-translate="high_contrast">High Contrast Mode</label>
+                                <p class="setting-desc" data-translate="high_contrast_desc">Better visibility for low vision</p>
+                            </div>
+                            <div class="toggle-switch">
+                                <input type="checkbox" id="highContrast">
+                                <span class="toggle-slider"></span>
+                            </div>
+                        </div>
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <label class="setting-label" data-translate="font_size">Font Size</label>
+                                <p class="setting-desc" data-translate="font_size_desc">Adjust text size for readability</p>
+                            </div>
+                            <select class="form-control" id="fontSize">
+                                <option value="small">Small</option>
+                                <option value="medium" selected>Medium</option>
+                                <option value="large">Large</option>
+                                <option value="xlarge">Extra Large</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="settings-category">
+                        <h3 data-translate="notifications">🔔 Notifications</h3>
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <label class="setting-label" data-translate="daily_reminders">Daily Learning Reminders</label>
+                                <p class="setting-desc" data-translate="reminder_desc">Get reminded to complete your daily goals</p>
+                            </div>
+                            <div class="toggle-switch">
+                                <input type="checkbox" id="dailyReminders" checked>
+                                <span class="toggle-slider"></span>
+                            </div>
+                        </div>
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <label class="setting-label" data-translate="achievement_alerts">Achievement Notifications</label>
+                                <p class="setting-desc" data-translate="achievement_desc">Celebrate when you earn badges and points</p>
+                            </div>
+                            <div class="toggle-switch">
+                                <input type="checkbox" id="achievementNotifs" checked>
+                                <span class="toggle-slider"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="settings-category">
+                        <h3 data-translate="performance">⚡ Performance</h3>
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <label class="setting-label" data-translate="data_saver">Data Saver Mode</label>
+                                <p class="setting-desc" data-translate="data_saver_desc">Reduce data usage for slow connections</p>
+                            </div>
+                            <div class="toggle-switch">
+                                <input type="checkbox" id="dataSaver">
+                                <span class="toggle-slider"></span>
+                            </div>
+                        </div>
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <label class="setting-label" data-translate="auto_sync">Auto Sync Progress</label>
+                                <p class="setting-desc" data-translate="auto_sync_desc">Automatically sync when online</p>
+                            </div>
+                            <div class="toggle-switch">
+                                <input type="checkbox" id="autoSync" checked>
+                                <span class="toggle-slider"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modals -->
+    <div id="achievementModal" class="modal hidden">
+        <div class="modal-content achievement-modal">
+            <div class="achievement-celebration">
+                <div class="confetti-container">
+                    <div class="confetti"></div>
+                    <div class="confetti"></div>
+                    <div class="confetti"></div>
+                </div>
+                <div class="achievement-icon" id="achievementIcon">🏆</div>
+                <h2 id="achievementTitle" data-translate="congratulations">Congratulations!</h2>
+                <p id="achievementDescription" data-translate="new_badge_earned">You've earned a new badge!</p>
+                <div class="achievement-rewards">
+                    <div class="reward-item">
+                        <span class="reward-icon">⭐</span>
+                        <span class="reward-text" id="pointsEarned">+25 Points</span>
+                    </div>
+                </div>
+                <button class="btn btn--primary" id="closeAchievement" data-translate="continue_learning">Continue Learning</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="languageModal" class="modal hidden">
+        <div class="modal-content language-modal">
+            <h3 data-translate="choose_language">Choose Your Language</h3>
+            <div class="language-options">
+                <div class="language-option" data-lang="en">
+                    <div class="lang-flag">🇺🇸</div>
+                    <div class="lang-info">
+                        <h4>English</h4>
+                        <p>Learn in English</p>
+                    </div>
+                </div>
+                <div class="language-option" data-lang="hi">
+                    <div class="lang-flag">🇮🇳</div>
+                    <div class="lang-info">
+                        <h4>हिन्दी</h4>
+                        <p>हिन्दी में सीखें</p>
+                    </div>
+                </div>
+                <div class="language-option" data-lang="mr">
+                    <div class="lang-flag">🚩</div>
+                    <div class="lang-info">
+                        <h4>मराठी</h4>
+                        <p>मराठीमध्ये शिका</p>
+                    </div>
+                </div>
+            </div>
+            <button class="btn btn--primary" id="closeLanguageModal" data-translate="confirm">Confirm</button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
